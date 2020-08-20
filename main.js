@@ -3,14 +3,13 @@ $( document ).ready(function() {
     const $nameField = $("#name");
     const $surnameField = $("#surname");
     const $emailField = $("#email");
-    const $dobField = $("#datepicker");
+    const $dateField = $("#datepicker");
     const $passwordField = $("#password");
     const $confPasswordField = $("#confPassword");
-    const $errorMess = $("#errorMess");
     const $successModal = $("#successModal");
     const $closeModal = $("#closeModal");
 
-    $dobField.datepicker({
+    $dateField.datepicker({
         locale: 'ru-ru',
         uiLibrary: 'bootstrap4',
         format: 'dd-mm-yyyy'
@@ -23,7 +22,7 @@ $( document ).ready(function() {
         const name = $nameField.val().trim();
         const surname = $surnameField.val().trim();
         const email = $emailField.val().trim();
-        const dob = $dobField.val().trim();
+        const date = $dateField.val().trim();
         const password = $passwordField.val().trim();
         const confPassword = $confPasswordField.val().trim();
         let isValid = true;
@@ -37,8 +36,8 @@ $( document ).ready(function() {
         } else if(email == "") {
             $emailField.siblings('.invalid-feedback').text("Введите email");
             isValid = false;
-        } else if(dob == "") {
-            $dobField.siblings('.invalid-feedback').text("Введите дату рождения");
+        } else if(date == "") {
+            $dateField.siblings('.invalid-feedback').text("Введите дату рождения");
             isValid = false;    
         } else if(password.length < 6) {
             $passwordField.siblings('.invalid-feedback').text("Введите пароль");
@@ -47,7 +46,7 @@ $( document ).ready(function() {
             $confPasswordField.siblings('.invalid-feedback').text("Повторите пароль");
             isValid = false;
         } else if(password !== confPassword) {
-            $errorMess.text("Пароли не совпадают");
+            $confPasswordField.siblings('.invalid-feedback').text("Пароли не совпадают");
             isValid = false;
         }
 
@@ -60,7 +59,7 @@ $( document ).ready(function() {
         $nameField.val("");
         $surnameField.val("");
         $emailField.val("");
-        $dobField.val("");
+        $dateField.val("");
         $passwordField.val("");
         $confPasswordField.val("");
         $registrationForm.removeClass("was-validated");
